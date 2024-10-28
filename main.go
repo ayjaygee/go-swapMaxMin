@@ -19,7 +19,7 @@ func SwapMaxMin(n int) (max int, min int) {
 			if i == 0 && digits[j] == 0 {
 				continue
 			}
-			curr := JoinInt(SwapValues(digits, i, j))
+			curr := JoinInt(SwapElements(digits, i, j))
 			if curr > max {
 				max = curr
 			}
@@ -39,7 +39,7 @@ func JoinInt(s []int) int {
 	return x
 }
 
-func SwapValues[T comparable](s []T, i int, j int) []T {
+func SwapElements[T comparable](s []T, i int, j int) []T {
 	output := slices.Clone(s)
 	output[i] = s[j]
 	output[j] = s[i]
