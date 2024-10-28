@@ -2,11 +2,28 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"slices"
+	"strconv"
 )
 
 func main() {
-	fmt.Println(SwapMaxMin(231))
+	if len(os.Args) == 1 {
+		n := 231
+		fmt.Println("Using default value", n)
+		fmt.Println(SwapMaxMin(n))
+	} else {
+		for _, arg := range os.Args[1:] {
+			fmt.Println()
+			fmt.Println("Finding max and min of", arg)
+			n, err := strconv.Atoi(arg)
+			if err != nil {
+				fmt.Println("Could not parse number")
+				continue
+			}
+			fmt.Println(SwapMaxMin(n))
+		}
+	}
 }
 
 func SwapMaxMin(n int) (max int, min int) {
